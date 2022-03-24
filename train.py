@@ -10,7 +10,7 @@ import argparse
 from stable_baselines3 import PPO
 from stable_baselines3.common.evaluation import evaluate_policy
 
-args = argparse.ArgumentParser(description='Train a PPO agent')
+parser = argparse.ArgumentParser(description='Train a PPO agent')
 parser.add_argument('--test', required=True, type=bool, help='Test or Train')
 
 args = parser.pars_args()
