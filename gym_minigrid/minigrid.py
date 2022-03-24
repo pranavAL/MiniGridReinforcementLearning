@@ -716,7 +716,7 @@ class MiniGridEnv(gym.Env):
 
         # Return first observation
         obs = self.gen_obs()
-        return obs
+        return obs['image']
 
     def seed(self, seed=1337):
         # Seed the random number generator
