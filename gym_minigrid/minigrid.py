@@ -1130,17 +1130,17 @@ class MiniGridEnv(gym.Env):
         fwd_cell = self.grid.get(*fwd_pos)
 
         # Rotate left
-        if action == self.actions.left:
+        if action == 0:
             self.agent_dir -= 1
             if self.agent_dir < 0:
                 self.agent_dir += 4
 
         # Rotate right
-        elif action == self.actions.right:
+        elif action == 1:
             self.agent_dir = (self.agent_dir + 1) % 4
 
         # Move forward
-        elif action == self.actions.forward:
+        elif action == 2:
             if fwd_cell == None or fwd_cell.can_overlap():
                 self.agent_pos = fwd_pos
             if fwd_cell != None and fwd_cell.type == 'goal':

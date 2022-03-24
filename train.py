@@ -14,14 +14,13 @@ num_episodes = 200
 
 for eps in range(num_episodes):
     current_reward = []
-    obs = env.reset()
+    state = env.reset()
     for i in range(1000):
-        action, _states = model.predict(obs, deterministic=True)
-        print(action)
+        action, state = model.predict(state, deterministic=True)
         obs, rewards, dones, info = env.step(action)
         current_reward.append(rewards)
         env.render()
         if dones:
-            obs = env.reset()
+            state = env.reset()
     print(f"Episode: {eps},  Average reward: {np.mean(current_reward)}")
 env.close()
