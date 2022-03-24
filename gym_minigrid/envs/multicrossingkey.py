@@ -1,8 +1,11 @@
 import cv2
+import numpy as np
+import matplotlib.pyplot as plt
 from gym import spaces
 from gym_minigrid.minigrid import *
 from gym_minigrid.register import register
 from gym_minigrid.window import Window
+from math import dist
 
 import itertools as itt
 
@@ -33,10 +36,13 @@ class MultiKeyCrossingEnv(MiniGridEnv):
 
     def reset(self):
         obs = MiniGridEnv.reset(self)
-        obs = cv2.resize(obs, (IMG_HEIGHT, IMG_WIDTH))
+        image = self.render('rgb_array')
+        obs = cv2.resize(image, (IMG_HEIGHT, IMG_WIDTH))
         return obs
 
     def step(self, action):
+        penalty = 0
+        reward = 0
 
         # Check if there is an obstacle in front of the agent
         front_cell = self.grid.get(*self.front_pos)
@@ -52,21 +58,24 @@ class MultiKeyCrossingEnv(MiniGridEnv):
             obst_loc.append(new_pos)
 
         # Update the agent's position/direction
-        obs, reward, done, info = MiniGridEnv.step(self, action)
-        obs = cv2.resize(obs, (IMG_HEIGHT, IMG_WIDTH))
-
-        print('step=%s, reward=%.2f' % (self.step_count, reward))
+        obs, _, done, info = MiniGridEnv.step(self, action)
+        image = self.render('rgb_array')
+        obs = cv2.resize(image, (IMG_HEIGHT, IMG_WIDTH))
+        dist_from_goal = dist(self.agent_pos, self.goal_pos)
+        reward = 1 - (dist_from_goal/12.0)
 
         if list(self.agent_pos) in obst_loc:
-            reward = -1
+            penalty = -1
             done = True
+            reward = reward + penalty
             return obs, reward, done, info
-
         return obs, reward, done, info
 
     def render(self, mode='human'):
         img = MiniGridEnv.render(self, mode)
-        self.window.show_img(img)
+        if mode=='human':
+            self.window.show_img(img)
+        return img
 
 class MultiCrossingKeyEnv(MultiKeyCrossingEnv):
     def __init__(self):

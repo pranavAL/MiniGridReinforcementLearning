@@ -716,7 +716,7 @@ class MiniGridEnv(gym.Env):
 
         # Return first observation
         obs = self.gen_obs()
-        return obs['image']
+        return obs
 
     def seed(self, seed=1337):
         # Seed the random number generator
@@ -813,6 +813,7 @@ class MiniGridEnv(gym.Env):
 
         # Place a goal square in the bottom-right corner
         self.put_obj(Goal(), width - 2, height - 2)
+        self.goal_pos = (width - 2, height - 2)
 
         v, h = object(), object()
 
@@ -836,13 +837,6 @@ class MiniGridEnv(gym.Env):
         self.mission = (
             "avoid security and reach green goal square"
         )
-
-    def _reward(self):
-        """
-        Compute the reward to be given upon success
-        """
-
-        return 1 - 0.9 * (self.step_count / self.max_steps)
 
     def _rand_int(self, low, high):
         """
@@ -1120,7 +1114,6 @@ class MiniGridEnv(gym.Env):
     def step(self, action):
         self.step_count += 1
 
-        reward = 0
         done = False
 
         # Get the position in front of the agent
@@ -1145,16 +1138,14 @@ class MiniGridEnv(gym.Env):
                 self.agent_pos = fwd_pos
             if fwd_cell != None and fwd_cell.type == 'goal':
                 done = True
-                reward = self._reward()
-            if fwd_cell != None and fwd_cell.type == 'lava':
-                done = True
 
         if self.step_count >= self.max_steps:
             done = True
 
         obs = self.gen_obs()
+        reward =  0 #distance from goal
 
-        return obs['image'], reward, done, {}
+        return obs, reward, done, {}
 
     def gen_obs_grid(self):
         """

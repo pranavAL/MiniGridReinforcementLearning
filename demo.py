@@ -19,7 +19,9 @@ obs = env.reset()
 img = env.render('rgb_array')
 action = env.action_space.sample()
 print(f"Sampled action: {action}")
-obs, reward, done, info = env.step(action)
-plt.imshow(obs)
-
+for i in range(100):
+    action = env.action_space.sample()
+    obs, reward, done, info = env.step(action)
+    env.render()
+env.close()
 print(obs.shape, reward, done, info)
