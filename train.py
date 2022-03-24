@@ -21,11 +21,9 @@ for eps in range(num_episodes):
         action, _states  = model.predict(obs, deterministic=True)
         obs, rewards, dones, info = env.step(action)
         current_reward.append(rewards)
-        env.render()
+        #env.render()
         if dones:
             obs = env.reset()
     print(f"Episode: {eps},  Average reward: {np.mean(current_reward)}")
 
-mean_reward, std_reward = evaluate_policy(model, eval_env, n_eval_episodes=100)
-print(f"mean_reward:{mean_reward}")
 env.close()
