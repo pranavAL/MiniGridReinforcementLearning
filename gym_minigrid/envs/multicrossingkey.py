@@ -64,8 +64,8 @@ class MultiKeyCrossingEnv(MiniGridEnv):
 
         return obs, reward, done, info
 
-    def render(self, tile_size):
-        img = MiniGridEnv.render(self,'rgb_array')
+    def render(self, mode='human'):
+        img = MiniGridEnv.render(self, mode)
         self.window.show_img(img)
 
 class MultiCrossingKeyEnv(MultiKeyCrossingEnv):
