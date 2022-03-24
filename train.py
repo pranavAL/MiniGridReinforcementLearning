@@ -13,7 +13,7 @@ from stable_baselines3.common.evaluation import evaluate_policy
 parser = argparse.ArgumentParser(description='Train a PPO agent')
 parser.add_argument('--test', required=True, type=bool, help='Test or Train')
 
-args = parser.pars_args()
+args = parser.parse_args()
 env = gym.make('MiniGrid-MultiCrossingKey-v1')
 logdir = "logs"
 models_dir = "models/PPO"
