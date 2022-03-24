@@ -6,7 +6,7 @@ from gym_minigrid.minigrid import *
 from gym_minigrid.register import register
 from gym_minigrid.window import Window
 import math
-from math import dist
+import math.dist as dist
 
 import itertools as itt
 
