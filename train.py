@@ -4,14 +4,17 @@ import gym_minigrid
 from gym_minigrid.wrappers import *
 from gym_minigrid.window import Window
 import matplotlib.pyplot as plt
+import os
 
 from stable_baselines3 import PPO
 from stable_baselines3.common.evaluation import evaluate_policy
 
 env = gym.make('MiniGrid-MultiCrossingKey-v1')
+logdir = "logs"
+os.makedirs(logdir, exist_ok=True)
 
-model = PPO("CnnPolicy", env, verbose=1)
-model.learn(total_timesteps=100000)
+model = PPO("CnnPolicy", env, verbose=1, tensorboard_log=logdir)
+model.learn(total_timesteps=250000)
 num_episodes = 1
 
 for eps in range(num_episodes):
