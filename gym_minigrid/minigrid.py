@@ -664,7 +664,7 @@ class MiniGridEnv(gym.Env):
         self.observation_space = spaces.Box(
             low=0,
             high=255,
-            shape=(1,1),
+            shape=(64,64),
             dtype='uint8'
         )
 

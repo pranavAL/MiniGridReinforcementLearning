@@ -33,6 +33,7 @@ class MultiKeyCrossingEnv(MiniGridEnv):
 
     def reset(self):
         obs = MiniGridEnv.reset(self)
+        obs = cv2.resize(obs, (IMG_HEIGHT, IMG_WIDTH))
         return obs
 
     def step(self, action):
