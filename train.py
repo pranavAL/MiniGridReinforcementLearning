@@ -8,7 +8,7 @@ from stable_baselines3 import DQN
 
 env = gym.make('MiniGrid-MultiCrossingKey-v1')
 
-model = DQN("CnnPolicy", env, verbose=1)
+model = DQN("CnnPolicy", buffer_size=5000, env, verbose=1)
 model.learn(total_timesteps=10000)
 num_episodes = 200
 
