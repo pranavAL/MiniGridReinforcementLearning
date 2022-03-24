@@ -16,7 +16,7 @@ print(f"Shape: {env.observation_space.shape}")
 print(f"Action space: {env.action_space}")
 
 obs = env.reset()
-print(type(obs))
+print(obs)
 img = env.render('rgb_array')
 action = env.action_space.sample()
 print(f"Sampled action: {action}")
