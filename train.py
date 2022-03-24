@@ -11,7 +11,7 @@ from stable_baselines3.common.evaluation import evaluate_policy
 env = gym.make('MiniGrid-MultiCrossingKey-v1')
 
 model = PPO("CnnPolicy", env, verbose=1)
-model.learn(total_timesteps=50000)
+model.learn(total_timesteps=100000)
 num_episodes = 1
 
 for eps in range(num_episodes):
