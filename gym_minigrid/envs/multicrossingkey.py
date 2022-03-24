@@ -62,7 +62,7 @@ class MultiKeyCrossingEnv(MiniGridEnv):
         image = self.render('rgb_array')
         obs = cv2.resize(image, (IMG_HEIGHT, IMG_WIDTH))
         dist_from_goal = dist(self.agent_pos, self.goal_pos)
-        reward = 1 - (dist_from_goal/12.0)
+        reward = (1 - (dist_from_goal/12.0)) * 10
 
         if list(self.agent_pos) in obst_loc:
             penalty = -1
