@@ -17,6 +17,7 @@ for eps in range(num_episodes):
     obs = env.reset()
     for i in range(1000):
         action, _states = model.predict(obs, deterministic=True)
+        print(action)
         obs, rewards, dones, info = env.step(action)
         current_reward.append(rewards)
         env.render()
