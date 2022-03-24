@@ -6,7 +6,6 @@ from gym_minigrid.minigrid import *
 from gym_minigrid.register import register
 from gym_minigrid.window import Window
 import math
-import math.dist as dist
 
 import itertools as itt
 
@@ -62,7 +61,7 @@ class MultiKeyCrossingEnv(MiniGridEnv):
         obs, _, done, info = MiniGridEnv.step(self, action)
         image = self.render('rgb_array')
         obs = cv2.resize(image, (IMG_HEIGHT, IMG_WIDTH))
-        dist_from_goal = dist(self.agent_pos, self.goal_pos)
+        dist_from_goal = math.dist(self.agent_pos, self.goal_pos)
         reward = (1 - (dist_from_goal/12.0)) * 10
 
         if list(self.agent_pos) in obst_loc:
