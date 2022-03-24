@@ -19,6 +19,5 @@ action = env.action_space.sample()
 print(f"Sampled action: {action}")
 obs, reward, done, info = env.step(action)
 plt.imshow(obs)
-plt.show()
 
 print(obs.shape, reward, done, info)
