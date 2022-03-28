@@ -1,3 +1,4 @@
+import wandb
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
@@ -12,13 +13,15 @@ import itertools as itt
 IMG_HEIGHT = 64
 IMG_WIDTH = 64
 
+wandb.init(id="MultiKeyCrossingEnv")
+
 class MultiKeyCrossingEnv(MiniGridEnv):
     """
     Environment with wall or lava obstacles, sparse reward.
     """
 
     def __init__(self, size=11, num_crossings=2, obstacle_type=Wall,
-                        obs1=2, obs2=3, seed=None):
+                        obs1=1, obs2=1, seed=None):
         self.num_crossings = num_crossings
         self.obstacle_type = obstacle_type
         self.path1_obstacles = obs1
@@ -26,7 +29,7 @@ class MultiKeyCrossingEnv(MiniGridEnv):
 
         super().__init__(
             grid_size=size,
-            max_steps=4*size*size,
+            max_steps=100,
             # Set this to True for maximum speed
             see_through_walls=False,
             seed=None
@@ -35,6 +38,7 @@ class MultiKeyCrossingEnv(MiniGridEnv):
         self.window = Window('gym_minigrid - MultiCrossingKey-v1')
 
     def reset(self):
+        self.mean_distance = []
         obs = MiniGridEnv.reset(self)
         image = self.render('rgb_array')
         obs = cv2.resize(image, (IMG_HEIGHT, IMG_WIDTH))
@@ -58,17 +62,22 @@ class MultiKeyCrossingEnv(MiniGridEnv):
             obst_loc.append(new_pos)
 
         # Update the agent's position/direction
-        obs, _, done, info = MiniGridEnv.step(self, action)
+        obs, R, done, info = MiniGridEnv.step(self, action)
+        #self.render()
         image = self.render('rgb_array')
         obs = cv2.resize(image, (IMG_HEIGHT, IMG_WIDTH))
+        dist_from_start = distance.euclidean(self.agent_pos, self.start_pos)
         dist_from_goal = distance.euclidean(self.agent_pos, self.goal_pos)
-        reward = (1 - (dist_from_goal/12.0)) * 10
+        self.mean_distance.append(dist_from_goal)
 
         if list(self.agent_pos) in obst_loc:
             penalty = -1
             done = True
-            reward = reward + penalty
-            return obs, reward, done, info
+
+        reward = R + (dist_from_start/30) + penalty
+        if done:
+            wandb.log({'Avg. Distance from Goal':np.mean(self.mean_distance)})
+
         return obs, reward, done, info
 
     def render(self, mode='human'):
@@ -80,7 +89,7 @@ class MultiKeyCrossingEnv(MiniGridEnv):
 class MultiCrossingKeyEnv(MultiKeyCrossingEnv):
     def __init__(self):
         super().__init__(size=11, num_crossings=1, obstacle_type=Wall,
-                         obs1=2, obs2=3)
+                         obs1=1, obs2=2)
 
 register(
     id='MiniGrid-MultiCrossingKey-v1',

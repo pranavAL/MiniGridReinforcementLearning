@@ -1,3 +1,4 @@
+import numpy as np
 import math
 import hashlib
 import gym
@@ -683,6 +684,7 @@ class MiniGridEnv(gym.Env):
         # Current position and direction of the agent
         self.agent_pos = None
         self.agent_dir = None
+        self.start_pos = (1, 1)
 
         # Initialize the RNG
         self.seed(seed=seed)
@@ -809,7 +811,7 @@ class MiniGridEnv(gym.Env):
 
         # Place the agent in the top-left corner
         self.agent_pos = (1, 1)
-        self.agent_dir = 0
+        self.agent_dir = np.random.randint(0,4)
 
         # Place a goal square in the bottom-right corner
         self.put_obj(Goal(), width - 2, height - 2)
@@ -1121,6 +1123,7 @@ class MiniGridEnv(gym.Env):
 
         # Get the contents of the cell in front of the agent
         fwd_cell = self.grid.get(*fwd_pos)
+        reward =  0 #distance from goal
 
         # Rotate left
         if action == 0:
@@ -1138,12 +1141,13 @@ class MiniGridEnv(gym.Env):
                 self.agent_pos = fwd_pos
             if fwd_cell != None and fwd_cell.type == 'goal':
                 done = True
+                reward =  1
 
         if self.step_count >= self.max_steps:
             done = True
 
         obs = self.gen_obs()
-        reward =  0 #distance from goal
+
 
         return obs, reward, done, {}
 
