@@ -1,0 +1,67 @@
+2022-03-26 16:05:46,460 INFO    MainThread:5156 [internal.py:wandb_internal():92] W&B internal server running at pid: 5156, started at: 2022-03-26 16:05:46.460902
+2022-03-26 16:05:46,590 INFO    WriterThread:5156 [datastore.py:open_for_write():77] open: C:\Users\Prana\Desktop\MTI-880-Assignment\MiniGridReinforcementLearning\wandb\run-20220326_160544-p3i113do\run-p3i113do.wandb
+2022-03-26 16:05:46,593 DEBUG   SenderThread:5156 [sender.py:send():235] send: header
+2022-03-26 16:05:46,593 DEBUG   SenderThread:5156 [sender.py:send():235] send: run
+2022-03-26 16:05:46,777 DEBUG   HandlerThread:5156 [handler.py:handle_request():141] handle_request: check_version
+2022-03-26 16:05:46,958 INFO    SenderThread:5156 [dir_watcher.py:__init__():169] watching files in: C:\Users\Prana\Desktop\MTI-880-Assignment\MiniGridReinforcementLearning\wandb\run-20220326_160544-p3i113do\files
+2022-03-26 16:05:46,958 INFO    SenderThread:5156 [sender.py:_start_run_threads():812] run started: p3i113do with start time 1648325145
+2022-03-26 16:05:46,958 DEBUG   SenderThread:5156 [sender.py:send():235] send: summary
+2022-03-26 16:05:46,958 INFO    SenderThread:5156 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-26 16:05:46,959 DEBUG   SenderThread:5156 [sender.py:send_request():249] send_request: check_version
+2022-03-26 16:05:47,055 DEBUG   HandlerThread:5156 [handler.py:handle_request():141] handle_request: run_start
+2022-03-26 16:05:47,282 DEBUG   HandlerThread:5156 [meta.py:__init__():37] meta init
+2022-03-26 16:05:47,282 DEBUG   HandlerThread:5156 [meta.py:__init__():51] meta init done
+2022-03-26 16:05:47,283 DEBUG   HandlerThread:5156 [meta.py:probe():211] probe
+2022-03-26 16:05:47,297 DEBUG   HandlerThread:5156 [meta.py:_setup_git():201] setup git
+2022-03-26 16:05:47,371 DEBUG   HandlerThread:5156 [meta.py:_setup_git():208] setup git done
+2022-03-26 16:05:47,371 DEBUG   HandlerThread:5156 [meta.py:_save_code():89] save code
+2022-03-26 16:05:47,408 DEBUG   HandlerThread:5156 [meta.py:_save_code():110] save code done
+2022-03-26 16:05:47,408 DEBUG   HandlerThread:5156 [meta.py:_save_patches():127] save patches
+2022-03-26 16:05:47,604 INFO    WriterThread:5156 [datastore.py:close():281] close: C:\Users\Prana\Desktop\MTI-880-Assignment\MiniGridReinforcementLearning\wandb\run-20220326_160544-p3i113do\run-p3i113do.wandb
+2022-03-26 16:05:47,966 INFO    Thread-11 :5156 [dir_watcher.py:_on_file_created():217] file/dir created: C:\Users\Prana\Desktop\MTI-880-Assignment\MiniGridReinforcementLearning\wandb\run-20220326_160544-p3i113do\files\wandb-summary.json
+2022-03-26 16:05:47,967 INFO    Thread-11 :5156 [dir_watcher.py:_on_file_created():217] file/dir created: C:\Users\Prana\Desktop\MTI-880-Assignment\MiniGridReinforcementLearning\wandb\run-20220326_160544-p3i113do\files\code\train.py
+2022-03-26 16:05:47,967 INFO    Thread-11 :5156 [dir_watcher.py:_on_file_created():217] file/dir created: C:\Users\Prana\Desktop\MTI-880-Assignment\MiniGridReinforcementLearning\wandb\run-20220326_160544-p3i113do\files\code
+2022-03-26 16:05:48,059 INFO    SenderThread:5156 [sender.py:finish():1078] shutting down sender
+2022-03-26 16:05:48,059 INFO    SenderThread:5156 [dir_watcher.py:finish():283] shutting down directory watcher
+2022-03-26 16:05:48,980 INFO    SenderThread:5156 [dir_watcher.py:finish():313] scan: C:\Users\Prana\Desktop\MTI-880-Assignment\MiniGridReinforcementLearning\wandb\run-20220326_160544-p3i113do\files
+2022-03-26 16:05:48,980 INFO    SenderThread:5156 [dir_watcher.py:finish():327] scan save: C:\Users\Prana\Desktop\MTI-880-Assignment\MiniGridReinforcementLearning\wandb\run-20220326_160544-p3i113do\files\config.yaml config.yaml
+2022-03-26 16:05:48,981 INFO    SenderThread:5156 [dir_watcher.py:finish():327] scan save: C:\Users\Prana\Desktop\MTI-880-Assignment\MiniGridReinforcementLearning\wandb\run-20220326_160544-p3i113do\files\wandb-summary.json wandb-summary.json
+2022-03-26 16:05:48,988 INFO    SenderThread:5156 [dir_watcher.py:finish():327] scan save: C:\Users\Prana\Desktop\MTI-880-Assignment\MiniGridReinforcementLearning\wandb\run-20220326_160544-p3i113do\files\code\train.py code\train.py
+2022-03-26 16:05:48,988 INFO    SenderThread:5156 [file_pusher.py:finish():145] shutting down file pusher
+2022-03-26 16:05:48,989 INFO    SenderThread:5156 [file_pusher.py:join():150] waiting for file pusher
+2022-03-26 16:05:49,077 INFO    Thread-27 :5156 [upload_job.py:push():117] Skipped uploading C:\Users\Prana\Desktop\MTI-880-Assignment\MiniGridReinforcementLearning\wandb\run-20220326_160544-p3i113do\files\code\train.py
+2022-03-26 16:05:49,499 INFO    Thread-25 :5156 [upload_job.py:push():137] Uploaded file C:\Users\Prana\Desktop\MTI-880-Assignment\MiniGridReinforcementLearning\wandb\run-20220326_160544-p3i113do\files\config.yaml
+2022-03-26 16:05:49,504 INFO    Thread-26 :5156 [upload_job.py:push():137] Uploaded file C:\Users\Prana\Desktop\MTI-880-Assignment\MiniGridReinforcementLearning\wandb\run-20220326_160544-p3i113do\files\wandb-summary.json
+2022-03-26 16:05:50,070 ERROR   MainThread:5156 [internal.py:wandb_internal():167] Thread HandlerThread:
+Traceback (most recent call last):
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\wandb\sdk\internal\internal_util.py", line 54, in run
+    self._run()
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\wandb\sdk\internal\internal_util.py", line 105, in _run
+    self._process(record)
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\wandb\sdk\internal\internal.py", line 267, in _process
+    self._hm.handle(record)
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\wandb\sdk\internal\handler.py", line 133, in handle
+    handler(record)
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\wandb\sdk\internal\handler.py", line 143, in handle_request
+    handler(record)
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\wandb\sdk\internal\handler.py", line 636, in handle_request_run_start
+    run_meta.probe()
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\wandb\sdk\internal\meta.py", line 244, in probe
+    self._save_patches()
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\wandb\sdk\internal\meta.py", line 134, in _save_patches
+    if self._git.dirty:
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\wandb\sdk\lib\git.py", line 56, in dirty
+    return self.repo.is_dirty()
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\git\repo\base.py", line 725, in is_dirty
+    len(self.git.diff('--cached', *default_args)):
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\git\cmd.py", line 639, in <lambda>
+    return lambda *args, **kwargs: self._call_process(name, *args, **kwargs)
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\git\cmd.py", line 1184, in _call_process
+    return self.execute(call, **exec_kwargs)
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\git\cmd.py", line 984, in execute
+    raise GitCommandError(redacted_command, status, stderr_value, stdout_value)
+git.exc.GitCommandError: Cmd('git') failed due to: exit code(128)
+  cmdline: git diff --cached --abbrev=40 --full-index --raw
+  stderr: 'error: bad signature 0x00000000
+fatal: index file corrupt'
+2022-03-26 16:05:56,791 INFO    MainThread:5156 [internal.py:handle_exit():82] Internal process exited

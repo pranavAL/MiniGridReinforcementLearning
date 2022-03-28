@@ -1,0 +1,42 @@
+Using cuda device
+Wrapping the env with a `Monitor` wrapper
+Wrapping the env in a DummyVecEnv.
+Wrapping the env in a VecTransposeImage.
+Traceback (most recent call last):
+  File "train.py", line 33, in <module>
+    model.learn(total_timesteps=250000)
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\stable_baselines3\ppo\ppo.py", line 299, in learn
+    return super(PPO, self).learn(
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\stable_baselines3\common\on_policy_algorithm.py", line 242, in learn
+    total_timesteps, callback = self._setup_learn(
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\stable_baselines3\common\base_class.py", line 442, in _setup_learn
+    self._logger = utils.configure_logger(self.verbose, self.tensorboard_log, tb_log_name, reset_num_timesteps)
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\stable_baselines3\common\utils.py", line 207, in configure_logger
+    return configure(save_path, format_strings=format_strings)
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\stable_baselines3\common\logger.py", line 580, in configure
+    output_formats = [make_output_format(f, folder, log_suffix) for f in format_strings]
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\stable_baselines3\common\logger.py", line 580, in <listcomp>
+    output_formats = [make_output_format(f, folder, log_suffix) for f in format_strings]
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\stable_baselines3\common\logger.py", line 396, in make_output_format
+    return TensorBoardOutputFormat(log_dir)
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\stable_baselines3\common\logger.py", line 337, in __init__
+    self.writer = SummaryWriter(log_dir=folder)
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\torch\utils\tensorboard\writer.py", line 220, in __init__
+    self._get_file_writer()
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\torch\utils\tensorboard\writer.py", line 250, in _get_file_writer
+    self.file_writer = FileWriter(self.log_dir, self.max_queue,
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\torch\utils\tensorboard\writer.py", line 60, in __init__
+    self.event_writer = EventFileWriter(
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\wandb\integration\tensorboard\monkeypatch.py", line 157, in __init__
+    _notify_tensorboard_logdir(logdir, save=save, root_logdir=root_logdir_arg)
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\wandb\integration\tensorboard\monkeypatch.py", line 167, in _notify_tensorboard_logdir
+    wandb.run._tensorboard_callback(logdir, save=save, root_logdir=root_logdir)
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\wandb\sdk\wandb_run.py", line 1098, in _tensorboard_callback
+    self._backend.interface.publish_tbdata(logdir, save, root_logdir)
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\wandb\sdk\interface\interface.py", line 482, in publish_tbdata
+    self._publish_tbdata(tbrecord)
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\wandb\sdk\interface\interface_shared.py", line 55, in _publish_tbdata
+    self._publish(rec)
+  File "C:\Users\Prana\Anaconda3\envs\myenv\lib\site-packages\wandb\sdk\interface\interface_queue.py", line 49, in _publish
+    raise Exception("The wandb backend process has shutdown")
+Exception: The wandb backend process has shutdown
